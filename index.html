@@ -76,13 +76,20 @@ h1 em { font-style: normal; color: var(--green); }
 
 /* Products */
 .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 35px; }
-.card { background: white; border: 1px solid var(--line); border-radius: 13px; padding: 27px; min-height: 245px; box-shadow: 0 12px 35px #193d240c; transition: all 0.3s ease; }
+.card { background: white; border: 1px solid var(--line); border-radius: 13px; padding: 27px; min-height: 245px; box-shadow: 0 12px 35px #193d240c; transition: all 0.3s ease; display: flex; flex-direction: column; }
 .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px #193d241a; border-color: #c5d8c8; }
-.card .symbol { width: 43px; height: 43px; border-radius: 11px; background: var(--soft); display: grid; place-items: center; color: var(--green); font-size: 18px; font-weight: 800; }
-.status { display: inline-block; margin-top: 20px; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #47795a; background: #edf6ef; padding: 7px 9px; border-radius: 30px; font-weight: 800; }
+.card .symbol { width: 60px; height: 60px; border-radius: 11px; background: var(--paper); display: grid; place-items: center; margin-bottom: 20px; overflow: hidden; padding: 5px; }
+.card .symbol img { width: 100%; height: 100%; object-fit: contain; }
+.status { display: inline-block; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #47795a; background: #edf6ef; padding: 7px 9px; border-radius: 30px; font-weight: 800; align-self: flex-start; }
 .planned { color: #7a7352; background: #f7f4e8; }
 .card h3 { font-size: 23px; margin: 13px 0 8px; }
-.card p { color: var(--muted); font-size: 13px; line-height: 1.75; margin: 0; }
+.card p { color: var(--muted); font-size: 13px; line-height: 1.75; margin: 0 0 20px 0; flex-grow: 1; }
+
+/* Progress Bar */
+.progress-container { margin-top: auto; }
+.progress-text { display: flex; justify-content: space-between; font-size: 11px; font-weight: 600; color: var(--muted); margin-bottom: 6px; }
+.progress-bar { width: 100%; height: 6px; background: var(--soft); border-radius: 10px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--green); border-radius: 10px; }
 
 /* About */
 .about { background: #edf4ee; }
@@ -206,25 +213,51 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
     <div class="wrap">
       <div class="eyebrow">The ecosystem</div>
       <h2>Independent products.<br>Connected possibilities.</h2>
-      <p class="sub">Every MYCELOR project has its own purpose and identity. Together, they form a growing digital ecosystem.</p>
+      <p class="sub">Every MYCELOR project has its own purpose and identity. Together, they form a growing digital ecosystem. As our root network expands, these products will share data and connect seamlessly.</p>
+      
       <div class="products">
+        <!-- SFM Card -->
         <article class="card">
-          <div class="symbol">G</div>
+          <div class="symbol">
+            <!-- لینک به فایل لوگوی SFM -->
+            <img src="sfm-logo.png" alt="SFM Logo">
+          </div>
           <span class="status">In development</span>
-          <h3>GAME</h3>
-          <p>An online strategy experience built around planning, competition and player communities.</p>
+          <h3>SFM</h3>
+          <p>Simple Football Manager: A comprehensive football management simulator. Buy and sell players, manage professional leagues, and connect with other managers through the RWG network.</p>
+          <div class="progress-container">
+            <div class="progress-text"><span>Progress</span><span>90%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+          </div>
         </article>
+
+        <!-- RWG Card -->
         <article class="card">
-          <div class="symbol">R</div>
+          <div class="symbol">
+            <!-- لینک به فایل لوگوی RWG -->
+            <img src="rwg-logo.png" alt="RWG Logo">
+          </div>
           <span class="status">In development</span>
           <h3>RWG</h3>
-          <p>An independent social platform designed to bring people, communities and business experiences together.</p>
+          <p>A dynamic social network featuring a unique voting system, business storefronts for all professions, and interactive live streams—both solo and group conferences.</p>
+          <div class="progress-container">
+            <div class="progress-text"><span>Progress</span><span>75%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 75%;"></div></div>
+          </div>
         </article>
+
+        <!-- STORE Card -->
         <article class="card">
-          <div class="symbol">S</div>
+          <div class="symbol">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--green);"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          </div>
           <span class="status planned">Planned</span>
           <h3>STORE</h3>
           <p>A future digital commerce project within the wider MYCELOR ecosystem.</p>
+          <div class="progress-container">
+            <div class="progress-text"><span>Progress</span><span>0%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 0%;"></div></div>
+          </div>
         </article>
       </div>
     </div>
@@ -280,7 +313,6 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
       <p class="sub">Have a question, a project idea, or just want to say hello? We'd love to hear from you.</p>
       
       <div class="contact-grid">
-        <!-- اطلاعات تماس -->
         <div class="contact-info">
           <h3>Let's talk about everything!</h3>
           <p>Don't like forms? Send us an email. We are always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
@@ -301,11 +333,9 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
           </div>
         </div>
 
-        <!-- فرم تماس -->
         <div class="contact-form">
           <div id="form-success">Thank you! Your message has been sent successfully.</div>
           
-          <!-- فرم با کلید Web3Forms شما -->
           <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
             <input type="hidden" name="access_key" value="100126b2-39b8-458d-bb39-cc15af8749ba">
             
@@ -348,7 +378,6 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
       <div class="foot-links">
         <h4>Legal</h4>
         <ul>
-          <!-- لینک‌های جدید اضافه شدند -->
           <li><a href="privacy.html">Privacy Policy</a></li>
           <li><a href="terms.html">Terms of Service</a></li>
           <li><a href="#contact">Contact</a></li>
