@@ -40,7 +40,7 @@
 html { scroll-behavior: smooth; scroll-padding-top: 90px; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: 'Inter', system-ui, -apple-system, sans-serif; }
 a { color: inherit; text-decoration: none; }
-.wrap { width: min(1160px, 92%); margin: auto; } /* عرض کمی بیشتر شد تا فضا بازتر باشد */
+.wrap { width: min(1160px, 92%); margin: auto; }
 
 /* Header & Nav */
 header { height: 82px; display: flex; align-items: center; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; transition: all 0.3s; }
@@ -151,7 +151,7 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   .head { flex-direction: row; padding: 0; justify-content: space-between; }
   .brand img { width: 95px; }
   nav { gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-  nav a { font-size: 11px; } /* فونت کمی کوچکتر تا Contact جا بشه */
+  nav a { font-size: 11px; }
   
   .foot-grid { grid-template-columns: 1fr; gap: 30px; }
   .foot-bottom { flex-direction: column; gap: 10px; text-align: center; }
@@ -163,7 +163,7 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   .contact-form { padding: 20px; }
   .brand img { width: 80px; }
   nav { gap: 6px; }
-  nav a { font-size: 10px; } /* در گوشی‌های کوچک هم کاملاً جا میشه */
+  nav a { font-size: 10px; }
   .info-item { font-size: 13px; }
 }
 </style>
@@ -348,8 +348,9 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
       <div class="foot-links">
         <h4>Legal</h4>
         <ul>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
+          <!-- لینک‌های جدید اضافه شدند -->
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
       </div>
