@@ -57,7 +57,7 @@ nav a:hover { color: var(--green); }
 .lang-btn:hover { color: var(--green); background: var(--soft); border-color: var(--line); }
 .lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 220px; max-height: 350px; overflow-y: auto; z-index: 200; }
 .lang-menu.active { display: block; }
-.lang-menu a { display: block; padding: 10px 15px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--soft); transition: 0.2s; }
+.lang-menu a { display: block; padding: 10px 15px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--soft); transition: 0.2s; cursor: pointer; }
 .lang-menu a:last-child { border-bottom: none; }
 .lang-menu a:hover { background: var(--green-light); color: var(--green); }
 
@@ -187,6 +187,10 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   .info-item { font-size: 13px; }
   .lang-btn span { display: none; }
 }
+
+/* استایل برای مخفی کردن نوار بالای گوگل ترنسلیت */
+.skiptranslate { display: none !important; }
+body { top: 0px !important; }
 </style>
 </head>
 <body>
@@ -210,111 +214,110 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
         <span>Language</span>
       </div>
       <div class="lang-menu" id="langMenu">
-        <!-- زبان‌ها به صورت لینک مستقیم به گوگل ترنسلیت -->
-        <a href="https://translate.google.com/translate?sl=auto&tl=af&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Afrikaans</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sq&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Albanian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=am&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Amharic</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ar&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">العربية (Arabic)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=hy&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Armenian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=az&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Azerbaijani</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=eu&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Basque</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=be&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Belarusian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=bn&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Bengali</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=bs&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Bosnian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=bg&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Bulgarian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ca&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Catalan</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ceb&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Cebuano</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ny&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Chichewa</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=zh-CN&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">中文 (Chinese)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=co&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Corsican</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=hr&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Croatian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=cs&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Czech</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=da&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Danish</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=nl&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Dutch</a>
-        <!-- تغییر در لینک انگلیسی برای جلوگیری از ترجمه مجدد -->
-        <a href="https://mycelor.irani-babak1987-209.workers.dev/" target="_blank" style="color: var(--green); font-weight: bold;">English (Original)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=eo&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Esperanto</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=et&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Estonian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=tl&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Filipino</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=fi&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Finnish</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=fr&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Français (French)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=fy&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Frisian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=gl&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Galician</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ka&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Georgian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=de&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Deutsch (German)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=el&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Greek</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=gu&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Gujarati</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ht&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Haitian Creole</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ha&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Hausa</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=haw&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Hawaiian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=iw&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Hebrew</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=hi&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Hindi</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=hmn&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Hmong</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=hu&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Hungarian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=is&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Icelandic</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ig&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Igbo</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=id&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Indonesian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ga&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Irish</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=it&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Italian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ja&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">日本語 (Japanese)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=jw&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Javanese</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=kn&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Kannada</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=kk&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Kazakh</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=km&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Khmer</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ko&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Korean</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ku&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Kurdish</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ky&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Kyrgyz</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=lo&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Lao</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=la&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Latin</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=lv&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Latvian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=lt&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Lithuanian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=lb&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Luxembourgish</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=mk&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Macedonian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=mg&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Malagasy</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ms&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Malay</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ml&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Malayalam</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=mt&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Maltese</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=mi&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Maori</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=mr&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Marathi</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=mn&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Mongolian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=my&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Myanmar (Burmese)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ne&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Nepali</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=no&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Norwegian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ps&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Pashto</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=fa&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">فارسی (Persian)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=pl&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Polish</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=pt&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Portuguese</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=pa&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Punjabi</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ro&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Romanian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ru&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Русский (Russian)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sm&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Samoan</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=gd&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Scots Gaelic</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sr&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Serbian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=st&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Sesotho</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sn&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Shona</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sd&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Sindhi</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=si&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Sinhala</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sk&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Slovak</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sl&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Slovenian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=so&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Somali</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=es&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Español (Spanish)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=su&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Sundanese</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sw&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Swahili</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=sv&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Swedish</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=tg&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Tajik</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ta&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Tamil</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=te&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Telugu</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=th&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Thai</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=tr&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Türkçe (Turkish)</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=uk&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Ukrainian</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=ur&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Urdu</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=uz&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Uzbek</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=vi&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Vietnamese</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=cy&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Welsh</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=xh&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Xhosa</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=yi&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Yiddish</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=yo&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Yoruba</a>
-        <a href="https://translate.google.com/translate?sl=auto&tl=zu&u=https://mycelor.irani-babak1987-209.workers.dev/" target="_blank">Zulu</a>
+        <!-- زبان‌ها با استفاده از جاوااسکریپت تغییر می‌کنند -->
+        <a onclick="changeLang('af')">Afrikaans</a>
+        <a onclick="changeLang('sq')">Albanian</a>
+        <a onclick="changeLang('am')">Amharic</a>
+        <a onclick="changeLang('ar')">العربية (Arabic)</a>
+        <a onclick="changeLang('hy')">Armenian</a>
+        <a onclick="changeLang('az')">Azerbaijani</a>
+        <a onclick="changeLang('eu')">Basque</a>
+        <a onclick="changeLang('be')">Belarusian</a>
+        <a onclick="changeLang('bn')">Bengali</a>
+        <a onclick="changeLang('bs')">Bosnian</a>
+        <a onclick="changeLang('bg')">Bulgarian</a>
+        <a onclick="changeLang('ca')">Catalan</a>
+        <a onclick="changeLang('ceb')">Cebuano</a>
+        <a onclick="changeLang('ny')">Chichewa</a>
+        <a onclick="changeLang('zh-CN')">中文 (Chinese)</a>
+        <a onclick="changeLang('co')">Corsican</a>
+        <a onclick="changeLang('hr')">Croatian</a>
+        <a onclick="changeLang('cs')">Czech</a>
+        <a onclick="changeLang('da')">Danish</a>
+        <a onclick="changeLang('nl')">Dutch</a>
+        <a onclick="changeLang('en')" style="color: var(--green); font-weight: bold;">English (Original)</a>
+        <a onclick="changeLang('eo')">Esperanto</a>
+        <a onclick="changeLang('et')">Estonian</a>
+        <a onclick="changeLang('tl')">Filipino</a>
+        <a onclick="changeLang('fi')">Finnish</a>
+        <a onclick="changeLang('fr')">Français (French)</a>
+        <a onclick="changeLang('fy')">Frisian</a>
+        <a onclick="changeLang('gl')">Galician</a>
+        <a onclick="changeLang('ka')">Georgian</a>
+        <a onclick="changeLang('de')">Deutsch (German)</a>
+        <a onclick="changeLang('el')">Greek</a>
+        <a onclick="changeLang('gu')">Gujarati</a>
+        <a onclick="changeLang('ht')">Haitian Creole</a>
+        <a onclick="changeLang('ha')">Hausa</a>
+        <a onclick="changeLang('haw')">Hawaiian</a>
+        <a onclick="changeLang('iw')">Hebrew</a>
+        <a onclick="changeLang('hi')">Hindi</a>
+        <a onclick="changeLang('hmn')">Hmong</a>
+        <a onclick="changeLang('hu')">Hungarian</a>
+        <a onclick="changeLang('is')">Icelandic</a>
+        <a onclick="changeLang('ig')">Igbo</a>
+        <a onclick="changeLang('id')">Indonesian</a>
+        <a onclick="changeLang('ga')">Irish</a>
+        <a onclick="changeLang('it')">Italian</a>
+        <a onclick="changeLang('ja')">日本語 (Japanese)</a>
+        <a onclick="changeLang('jw')">Javanese</a>
+        <a onclick="changeLang('kn')">Kannada</a>
+        <a onclick="changeLang('kk')">Kazakh</a>
+        <a onclick="changeLang('km')">Khmer</a>
+        <a onclick="changeLang('ko')">Korean</a>
+        <a onclick="changeLang('ku')">Kurdish</a>
+        <a onclick="changeLang('ky')">Kyrgyz</a>
+        <a onclick="changeLang('lo')">Lao</a>
+        <a onclick="changeLang('la')">Latin</a>
+        <a onclick="changeLang('lv')">Latvian</a>
+        <a onclick="changeLang('lt')">Lithuanian</a>
+        <a onclick="changeLang('lb')">Luxembourgish</a>
+        <a onclick="changeLang('mk')">Macedonian</a>
+        <a onclick="changeLang('mg')">Malagasy</a>
+        <a onclick="changeLang('ms')">Malay</a>
+        <a onclick="changeLang('ml')">Malayalam</a>
+        <a onclick="changeLang('mt')">Maltese</a>
+        <a onclick="changeLang('mi')">Maori</a>
+        <a onclick="changeLang('mr')">Marathi</a>
+        <a onclick="changeLang('mn')">Mongolian</a>
+        <a onclick="changeLang('my')">Myanmar (Burmese)</a>
+        <a onclick="changeLang('ne')">Nepali</a>
+        <a onclick="changeLang('no')">Norwegian</a>
+        <a onclick="changeLang('ps')">Pashto</a>
+        <a onclick="changeLang('fa')">فارسی (Persian)</a>
+        <a onclick="changeLang('pl')">Polish</a>
+        <a onclick="changeLang('pt')">Portuguese</a>
+        <a onclick="changeLang('pa')">Punjabi</a>
+        <a onclick="changeLang('ro')">Romanian</a>
+        <a onclick="changeLang('ru')">Русский (Russian)</a>
+        <a onclick="changeLang('sm')">Samoan</a>
+        <a onclick="changeLang('gd')">Scots Gaelic</a>
+        <a onclick="changeLang('sr')">Serbian</a>
+        <a onclick="changeLang('st')">Sesotho</a>
+        <a onclick="changeLang('sn')">Shona</a>
+        <a onclick="changeLang('sd')">Sindhi</a>
+        <a onclick="changeLang('si')">Sinhala</a>
+        <a onclick="changeLang('sk')">Slovak</a>
+        <a onclick="changeLang('sl')">Slovenian</a>
+        <a onclick="changeLang('so')">Somali</a>
+        <a onclick="changeLang('es')">Español (Spanish)</a>
+        <a onclick="changeLang('su')">Sundanese</a>
+        <a onclick="changeLang('sw')">Swahili</a>
+        <a onclick="changeLang('sv')">Swedish</a>
+        <a onclick="changeLang('tg')">Tajik</a>
+        <a onclick="changeLang('ta')">Tamil</a>
+        <a onclick="changeLang('te')">Telugu</a>
+        <a onclick="changeLang('th')">Thai</a>
+        <a onclick="changeLang('tr')">Türkçe (Turkish)</a>
+        <a onclick="changeLang('uk')">Ukrainian</a>
+        <a onclick="changeLang('ur')">Urdu</a>
+        <a onclick="changeLang('uz')">Uzbek</a>
+        <a onclick="changeLang('vi')">Vietnamese</a>
+        <a onclick="changeLang('cy')">Welsh</a>
+        <a onclick="changeLang('xh')">Xhosa</a>
+        <a onclick="changeLang('yi')">Yiddish</a>
+        <a onclick="changeLang('yo')">Yoruba</a>
+        <a onclick="changeLang('zu')">Zulu</a>
       </div>
     </div>
   </div>
@@ -529,6 +532,23 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
         }
       }
     }
+  }
+
+  // تابع تغییر زبان
+  function changeLang(langCode) {
+    // پاک کردن کوکی‌های قبلی برای جلوگیری از تداخل
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
+    
+    // اگر زبان انگلیسی بود، هیچ ترجمه‌ای اعمال نشود
+    if (langCode === 'en') {
+      window.location.reload();
+      return;
+    }
+    
+    // هدایت به گوگل ترنسلیت برای زبان‌های دیگر
+    var url = window.location.href.split('?')[0].split('#')[0];
+    window.location.href = "https://translate.google.com/translate?sl=auto&tl=" + langCode + "&u=" + url;
   }
 
   // اسکریپت نمایش پیام موفقیت فرم
