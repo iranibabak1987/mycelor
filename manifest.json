@@ -1,0 +1,17 @@
+{
+  "name": "MYCELOR - One Network. Many Possibilities.",
+  "short_name": "MYCELOR",
+  "description": "A growing digital ecosystem connecting independent products.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7faf7",
+  "theme_color": "#286b4c",
+  "icons": [
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
