@@ -45,33 +45,21 @@ a { color: inherit; text-decoration: none; }
 
 /* Header & Nav */
 header { height: 82px; display: flex; align-items: center; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; transition: all 0.3s; }
-.head { display: flex; align-items: center; justify-content: space-between; gap: 15px; width: 100%; }
+.head { display: flex; align-items: center; justify-content: space-between; gap: 15px; width: 100%; position: relative; }
 .brand img { width: 140px; height: auto; object-fit: contain; display: block; }
-.nav-wrapper { display: flex; align-items: center; gap: 20px; }
 nav { display: flex; gap: 20px; }
 nav a { font-size: 13px; color: #526258; font-weight: 600; transition: color 0.2s; white-space: nowrap; }
 nav a:hover { color: var(--green); }
 
-/* Language Selector */
-#google_translate_element { display: inline-block; }
-.goog-te-gadget { font-family: 'Inter', sans-serif !important; font-size: 0px !important; } /* مخفی کردن متن پیش‌فرض گوگل */
-.goog-te-gadget .goog-te-combo { 
-  padding: 6px 10px; 
-  border: 1px solid var(--line); 
-  border-radius: 7px; 
-  background: var(--paper); 
-  color: var(--ink); 
-  font-size: 12px; 
-  font-weight: 600; 
-  cursor: pointer;
-  outline: none;
-}
-.goog-te-gadget .goog-te-combo:hover { border-color: var(--green); }
-/* مخفی کردن بنر بالای صفحه گوگل */
-.goog-te-banner-frame.skiptranslate { display: none !important; }
-body { top: 0px !important; }
-.goog-logo-link { display: none !important; }
-.goog-te-gadget span { display: none !important; }
+/* Custom Language Selector */
+.lang-switcher { position: absolute; top: 50%; right: 0; transform: translateY(-50%); z-index: 10; }
+.lang-btn { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: var(--muted); cursor: pointer; padding: 5px 8px; border-radius: 5px; transition: 0.2s; border: 1px solid transparent; }
+.lang-btn:hover { color: var(--green); background: var(--soft); border-color: var(--line); }
+.lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 200px; max-height: 300px; overflow-y: auto; z-index: 200; }
+.lang-menu.active { display: block; }
+.lang-menu a { display: block; padding: 10px 15px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--soft); transition: 0.2s; }
+.lang-menu a:last-child { border-bottom: none; }
+.lang-menu a:hover { background: var(--green-light); color: var(--green); }
 
 /* Hero */
 .hero { padding: 85px 0 75px; background: radial-gradient(ellipse at 82% 35%, #dceee0 0, transparent 34%), linear-gradient(120deg, #f7faf7, #f1f7f1); }
@@ -176,12 +164,14 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   .business { display: block; padding: 30px; text-align: center; }
   .business .btn { margin-top: 20px; }
   
-  header { height: auto; padding: 15px 0; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-  .head { flex-direction: column; padding: 0; gap: 15px; }
-  .brand img { width: 100px; }
-  .nav-wrapper { flex-direction: column; width: 100%; gap: 10px; }
-  nav { gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
-  nav a { font-size: 12px; }
+  header { height: 70px; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .head { flex-direction: row; padding: 0; justify-content: space-between; }
+  .brand img { width: 95px; }
+  nav { gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
+  nav a { font-size: 11px; }
+  
+  .lang-switcher { position: relative; top: auto; right: auto; transform: none; margin-left: 10px; }
+  .lang-menu { right: 0; }
   
   .foot-grid { grid-template-columns: 1fr; gap: 30px; }
   .foot-bottom { flex-direction: column; gap: 10px; text-align: center; }
@@ -191,8 +181,11 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   .hero { padding: 55px 0; }
   .section { padding: 62px 0; }
   .contact-form { padding: 20px; }
-  nav a { font-size: 11px; }
+  .brand img { width: 80px; }
+  nav { gap: 6px; }
+  nav a { font-size: 10px; }
   .info-item { font-size: 13px; }
+  .lang-btn span { display: none; } /* در گوشی‌های خیلی کوچک فقط آیکون نشان داده شود */
 }
 </style>
 </head>
@@ -201,16 +194,34 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   <div class="wrap head">
     <a class="brand" href="#home" aria-label="MYCELOR home"><img src="mycelor-logo.jpg" alt="MYCELOR logo"></a>
     
-    <div class="nav-wrapper">
-      <nav aria-label="Main navigation">
-        <a href="#home">Home</a>
-        <a href="#products">Products</a>
-        <a href="#about">About</a>
-        <a href="#business">Business</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <!-- دکمه ترجمه -->
-      <div id="google_translate_element"></div>
+    <!-- منوی اصلی -->
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#products">Products</a>
+      <a href="#about">About</a>
+      <a href="#business">Business</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- دکمه زبان سفارشی -->
+    <div class="lang-switcher">
+      <div class="lang-btn" onclick="document.getElementById('langMenu').classList.toggle('active')">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        <span>Language</span>
+      </div>
+      <div class="lang-menu" id="langMenu">
+        <!-- زبان‌های مهم و ارزشمند -->
+        <a href="#googtrans(en|fa)" onclick="changeLang('fa')">فارسی (Persian)</a>
+        <a href="#googtrans(en|ar)" onclick="changeLang('ar')">العربية (Arabic)</a>
+        <a href="#googtrans(en|zh-CN)" onclick="changeLang('zh-CN')">中文 (Chinese)</a>
+        <a href="#googtrans(en|es)" onclick="changeLang('es')">Español (Spanish)</a>
+        <a href="#googtrans(en|fr)" onclick="changeLang('fr')">Français (French)</a>
+        <a href="#googtrans(en|de)" onclick="changeLang('de')">Deutsch (German)</a>
+        <a href="#googtrans(en|ru)" onclick="changeLang('ru')">Русский (Russian)</a>
+        <a href="#googtrans(en|ja)" onclick="changeLang('ja')">日本語 (Japanese)</a>
+        <a href="#googtrans(en|tr)" onclick="changeLang('tr')">Türkçe (Turkish)</a>
+        <a href="#googtrans(en|en)" onclick="changeLang('en')" style="color: var(--green); font-weight: bold;">English (Original)</a>
+      </div>
     </div>
   </div>
 </header>
@@ -242,7 +253,6 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
       <p class="sub">Every MYCELOR project has its own purpose and identity. Together, they form a growing digital ecosystem. As our root network expands, these products will share data and connect seamlessly. All applications will be accessible directly through this website.</p>
       
       <div class="products">
-        <!-- کارت SFM -->
         <a href="sfm.html" class="card">
           <div class="symbol">
             <img src="sfm-logo.png" alt="SFM Logo">
@@ -256,7 +266,6 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
           </div>
         </a>
 
-        <!-- کارت RWG -->
         <a href="rwg.html" class="card">
           <div class="symbol">
             <img src="rwg-logo.png" alt="RWG Logo">
@@ -270,7 +279,6 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
           </div>
         </a>
 
-        <!-- STORE Card -->
         <article class="card">
           <div class="symbol">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--green);"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -415,10 +423,40 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   </div>
 </footer>
 
-<!-- اسکریپت ترجمه گوگل -->
+<!-- اسکریپت مخفی گوگل ترنسلیت و مدیریت تغییر زبان -->
+<!-- این بخش برای این است که از سیستم ترجمه گوگل استفاده کنیم بدون اینکه ظاهر سایت را خراب کند -->
+<div id="google_translate_element" style="display:none;"></div>
+
 <script type="text/javascript">
+  // بستن منو با کلیک در بیرون از آن
+  window.onclick = function(event) {
+    if (!event.target.matches('.lang-btn') && !event.target.matches('.lang-btn *')) {
+      var dropdowns = document.getElementsByClassName("lang-menu");
+      for (var i = 0; i < dropdowns.length; i++) {
+        var openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('active')) {
+          openDropdown.classList.remove('active');
+        }
+      }
+    }
+  }
+
   function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en', layout: google.translate.TranslateElement.InlineLayout.SIMPLE}, 'google_translate_element');
+    new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
+  }
+
+  // تابع اختصاصی برای تغییر زبان با استفاده از کوکی‌های گوگل
+  function changeLang(langCode) {
+    var select = document.querySelector('.goog-te-combo');
+    if (select) {
+      select.value = langCode;
+      select.dispatchEvent(new Event('change'));
+    } else {
+      // اگر هنوز لود نشده بود، با تغییر هش آدرس این کار را انجام می‌دهیم
+      window.location.hash = 'googtrans(en|' + langCode + ')';
+      window.location.reload();
+    }
+    document.getElementById('langMenu').classList.remove('active');
   }
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
