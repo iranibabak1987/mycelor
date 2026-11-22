@@ -55,7 +55,7 @@ nav a:hover { color: var(--green); }
 .lang-switcher { position: absolute; top: 50%; right: 0; transform: translateY(-50%); z-index: 10; }
 .lang-btn { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: var(--muted); cursor: pointer; padding: 5px 8px; border-radius: 5px; transition: 0.2s; border: 1px solid transparent; }
 .lang-btn:hover { color: var(--green); background: var(--soft); border-color: var(--line); }
-.lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 200px; max-height: 300px; overflow-y: auto; z-index: 200; }
+.lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 220px; max-height: 350px; overflow-y: auto; z-index: 200; }
 .lang-menu.active { display: block; }
 .lang-menu a { display: block; padding: 10px 15px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--soft); transition: 0.2s; }
 .lang-menu a:last-child { border-bottom: none; }
@@ -185,7 +185,7 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   nav { gap: 6px; }
   nav a { font-size: 10px; }
   .info-item { font-size: 13px; }
-  .lang-btn span { display: none; } /* در گوشی‌های خیلی کوچک فقط آیکون نشان داده شود */
+  .lang-btn span { display: none; }
 }
 </style>
 </head>
@@ -203,24 +203,117 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
       <a href="#contact">Contact</a>
     </nav>
 
-    <!-- دکمه زبان سفارشی -->
+    <!-- دکمه زبان سفارشی با تمام زبان‌ها -->
     <div class="lang-switcher">
       <div class="lang-btn" onclick="document.getElementById('langMenu').classList.toggle('active')">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
         <span>Language</span>
       </div>
       <div class="lang-menu" id="langMenu">
-        <!-- زبان‌های مهم و ارزشمند -->
-        <a href="#googtrans(en|fa)" onclick="changeLang('fa')">فارسی (Persian)</a>
+        <!-- زبان‌های مهم و ارزشمند به ترتیب حروف الفبا -->
+        <a href="#googtrans(en|af)" onclick="changeLang('af')">Afrikaans</a>
+        <a href="#googtrans(en|sq)" onclick="changeLang('sq')">Albanian</a>
+        <a href="#googtrans(en|am)" onclick="changeLang('am')">Amharic</a>
         <a href="#googtrans(en|ar)" onclick="changeLang('ar')">العربية (Arabic)</a>
+        <a href="#googtrans(en|hy)" onclick="changeLang('hy')">Armenian</a>
+        <a href="#googtrans(en|az)" onclick="changeLang('az')">Azerbaijani</a>
+        <a href="#googtrans(en|eu)" onclick="changeLang('eu')">Basque</a>
+        <a href="#googtrans(en|be)" onclick="changeLang('be')">Belarusian</a>
+        <a href="#googtrans(en|bn)" onclick="changeLang('bn')">Bengali</a>
+        <a href="#googtrans(en|bs)" onclick="changeLang('bs')">Bosnian</a>
+        <a href="#googtrans(en|bg)" onclick="changeLang('bg')">Bulgarian</a>
+        <a href="#googtrans(en|ca)" onclick="changeLang('ca')">Catalan</a>
+        <a href="#googtrans(en|ceb)" onclick="changeLang('ceb')">Cebuano</a>
+        <a href="#googtrans(en|ny)" onclick="changeLang('ny')">Chichewa</a>
         <a href="#googtrans(en|zh-CN)" onclick="changeLang('zh-CN')">中文 (Chinese)</a>
-        <a href="#googtrans(en|es)" onclick="changeLang('es')">Español (Spanish)</a>
-        <a href="#googtrans(en|fr)" onclick="changeLang('fr')">Français (French)</a>
-        <a href="#googtrans(en|de)" onclick="changeLang('de')">Deutsch (German)</a>
-        <a href="#googtrans(en|ru)" onclick="changeLang('ru')">Русский (Russian)</a>
-        <a href="#googtrans(en|ja)" onclick="changeLang('ja')">日本語 (Japanese)</a>
-        <a href="#googtrans(en|tr)" onclick="changeLang('tr')">Türkçe (Turkish)</a>
+        <a href="#googtrans(en|co)" onclick="changeLang('co')">Corsican</a>
+        <a href="#googtrans(en|hr)" onclick="changeLang('hr')">Croatian</a>
+        <a href="#googtrans(en|cs)" onclick="changeLang('cs')">Czech</a>
+        <a href="#googtrans(en|da)" onclick="changeLang('da')">Danish</a>
+        <a href="#googtrans(en|nl)" onclick="changeLang('nl')">Dutch</a>
         <a href="#googtrans(en|en)" onclick="changeLang('en')" style="color: var(--green); font-weight: bold;">English (Original)</a>
+        <a href="#googtrans(en|eo)" onclick="changeLang('eo')">Esperanto</a>
+        <a href="#googtrans(en|et)" onclick="changeLang('et')">Estonian</a>
+        <a href="#googtrans(en|tl)" onclick="changeLang('tl')">Filipino</a>
+        <a href="#googtrans(en|fi)" onclick="changeLang('fi')">Finnish</a>
+        <a href="#googtrans(en|fr)" onclick="changeLang('fr')">Français (French)</a>
+        <a href="#googtrans(en|fy)" onclick="changeLang('fy')">Frisian</a>
+        <a href="#googtrans(en|gl)" onclick="changeLang('gl')">Galician</a>
+        <a href="#googtrans(en|ka)" onclick="changeLang('ka')">Georgian</a>
+        <a href="#googtrans(en|de)" onclick="changeLang('de')">Deutsch (German)</a>
+        <a href="#googtrans(en|el)" onclick="changeLang('el')">Greek</a>
+        <a href="#googtrans(en|gu)" onclick="changeLang('gu')">Gujarati</a>
+        <a href="#googtrans(en|ht)" onclick="changeLang('ht')">Haitian Creole</a>
+        <a href="#googtrans(en|ha)" onclick="changeLang('ha')">Hausa</a>
+        <a href="#googtrans(en|haw)" onclick="changeLang('haw')">Hawaiian</a>
+        <a href="#googtrans(en|iw)" onclick="changeLang('iw')">Hebrew</a>
+        <a href="#googtrans(en|hi)" onclick="changeLang('hi')">Hindi</a>
+        <a href="#googtrans(en|hmn)" onclick="changeLang('hmn')">Hmong</a>
+        <a href="#googtrans(en|hu)" onclick="changeLang('hu')">Hungarian</a>
+        <a href="#googtrans(en|is)" onclick="changeLang('is')">Icelandic</a>
+        <a href="#googtrans(en|ig)" onclick="changeLang('ig')">Igbo</a>
+        <a href="#googtrans(en|id)" onclick="changeLang('id')">Indonesian</a>
+        <a href="#googtrans(en|ga)" onclick="changeLang('ga')">Irish</a>
+        <a href="#googtrans(en|it)" onclick="changeLang('it')">Italian</a>
+        <a href="#googtrans(en|ja)" onclick="changeLang('ja')">日本語 (Japanese)</a>
+        <a href="#googtrans(en|jw)" onclick="changeLang('jw')">Javanese</a>
+        <a href="#googtrans(en|kn)" onclick="changeLang('kn')">Kannada</a>
+        <a href="#googtrans(en|kk)" onclick="changeLang('kk')">Kazakh</a>
+        <a href="#googtrans(en|km)" onclick="changeLang('km')">Khmer</a>
+        <a href="#googtrans(en|ko)" onclick="changeLang('ko')">Korean</a>
+        <a href="#googtrans(en|ku)" onclick="changeLang('ku')">Kurdish</a>
+        <a href="#googtrans(en|ky)" onclick="changeLang('ky')">Kyrgyz</a>
+        <a href="#googtrans(en|lo)" onclick="changeLang('lo')">Lao</a>
+        <a href="#googtrans(en|la)" onclick="changeLang('la')">Latin</a>
+        <a href="#googtrans(en|lv)" onclick="changeLang('lv')">Latvian</a>
+        <a href="#googtrans(en|lt)" onclick="changeLang('lt')">Lithuanian</a>
+        <a href="#googtrans(en|lb)" onclick="changeLang('lb')">Luxembourgish</a>
+        <a href="#googtrans(en|mk)" onclick="changeLang('mk')">Macedonian</a>
+        <a href="#googtrans(en|mg)" onclick="changeLang('mg')">Malagasy</a>
+        <a href="#googtrans(en|ms)" onclick="changeLang('ms')">Malay</a>
+        <a href="#googtrans(en|ml)" onclick="changeLang('ml')">Malayalam</a>
+        <a href="#googtrans(en|mt)" onclick="changeLang('mt')">Maltese</a>
+        <a href="#googtrans(en|mi)" onclick="changeLang('mi')">Maori</a>
+        <a href="#googtrans(en|mr)" onclick="changeLang('mr')">Marathi</a>
+        <a href="#googtrans(en|mn)" onclick="changeLang('mn')">Mongolian</a>
+        <a href="#googtrans(en|my)" onclick="changeLang('my')">Myanmar (Burmese)</a>
+        <a href="#googtrans(en|ne)" onclick="changeLang('ne')">Nepali</a>
+        <a href="#googtrans(en|no)" onclick="changeLang('no')">Norwegian</a>
+        <a href="#googtrans(en|ps)" onclick="changeLang('ps')">Pashto</a>
+        <a href="#googtrans(en|fa)" onclick="changeLang('fa')">فارسی (Persian)</a>
+        <a href="#googtrans(en|pl)" onclick="changeLang('pl')">Polish</a>
+        <a href="#googtrans(en|pt)" onclick="changeLang('pt')">Portuguese</a>
+        <a href="#googtrans(en|pa)" onclick="changeLang('pa')">Punjabi</a>
+        <a href="#googtrans(en|ro)" onclick="changeLang('ro')">Romanian</a>
+        <a href="#googtrans(en|ru)" onclick="changeLang('ru')">Русский (Russian)</a>
+        <a href="#googtrans(en|sm)" onclick="changeLang('sm')">Samoan</a>
+        <a href="#googtrans(en|gd)" onclick="changeLang('gd')">Scots Gaelic</a>
+        <a href="#googtrans(en|sr)" onclick="changeLang('sr')">Serbian</a>
+        <a href="#googtrans(en|st)" onclick="changeLang('st')">Sesotho</a>
+        <a href="#googtrans(en|sn)" onclick="changeLang('sn')">Shona</a>
+        <a href="#googtrans(en|sd)" onclick="changeLang('sd')">Sindhi</a>
+        <a href="#googtrans(en|si)" onclick="changeLang('si')">Sinhala</a>
+        <a href="#googtrans(en|sk)" onclick="changeLang('sk')">Slovak</a>
+        <a href="#googtrans(en|sl)" onclick="changeLang('sl')">Slovenian</a>
+        <a href="#googtrans(en|so)" onclick="changeLang('so')">Somali</a>
+        <a href="#googtrans(en|es)" onclick="changeLang('es')">Español (Spanish)</a>
+        <a href="#googtrans(en|su)" onclick="changeLang('su')">Sundanese</a>
+        <a href="#googtrans(en|sw)" onclick="changeLang('sw')">Swahili</a>
+        <a href="#googtrans(en|sv)" onclick="changeLang('sv')">Swedish</a>
+        <a href="#googtrans(en|tg)" onclick="changeLang('tg')">Tajik</a>
+        <a href="#googtrans(en|ta)" onclick="changeLang('ta')">Tamil</a>
+        <a href="#googtrans(en|te)" onclick="changeLang('te')">Telugu</a>
+        <a href="#googtrans(en|th)" onclick="changeLang('th')">Thai</a>
+        <a href="#googtrans(en|tr)" onclick="changeLang('tr')">Türkçe (Turkish)</a>
+        <a href="#googtrans(en|uk)" onclick="changeLang('uk')">Ukrainian</a>
+        <a href="#googtrans(en|ur)" onclick="changeLang('ur')">Urdu</a>
+        <a href="#googtrans(en|uz)" onclick="changeLang('uz')">Uzbek</a>
+        <a href="#googtrans(en|vi)" onclick="changeLang('vi')">Vietnamese</a>
+        <a href="#googtrans(en|cy)" onclick="changeLang('cy')">Welsh</a>
+        <a href="#googtrans(en|xh)" onclick="changeLang('xh')">Xhosa</a>
+        <a href="#googtrans(en|yi)" onclick="changeLang('yi')">Yiddish</a>
+        <a href="#googtrans(en|yo)" onclick="changeLang('yo')">Yoruba</a>
+        <a href="#googtrans(en|zu)" onclick="changeLang('zu')">Zulu</a>
       </div>
     </div>
   </div>
@@ -294,209 +387,3 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
       </div>
     </div>
   </section>
-
-  <!-- About Section -->
-  <section class="section about" id="about">
-    <div class="wrap about-grid">
-      <div>
-        <div class="eyebrow">The idea behind MYCELOR</div>
-        <h2>Growing beyond boundaries.</h2>
-        <p class="sub">Inspired by the way mycelium forms vast networks beneath the surface, MYCELOR connects independent ideas without taking away their individuality.</p>
-        <div class="principles">
-          <div class="principle">
-            <span class="dot"></span>
-            <div><strong>Independent by design</strong><p>Each product can evolve on its own path, with its own identity.</p></div>
-          </div>
-          <div class="principle">
-            <span class="dot"></span>
-            <div><strong>Connected by possibility</strong><p>Shared vision creates opportunities for collaboration and growth.</p></div>
-          </div>
-          <div class="principle">
-            <span class="dot"></span>
-            <div><strong>Built to expand</strong><p>New projects can become new branches of the network over time.</p></div>
-          </div>
-        </div>
-      </div>
-      <div class="logo-panel">
-        <img src="mycelor-logo.jpg" alt="Official MYCELOR logo">
-      </div>
-    </div>
-  </section>
-
-  <!-- Business Banner -->
-  <section class="section" id="business">
-    <div class="wrap">
-      <div class="business">
-        <div>
-          <div class="eyebrow">Build connections</div>
-          <h2>Let’s grow new possibilities.</h2>
-          <p>MYCELOR is open to meaningful conversations around technology, creative projects and future collaborations.</p>
-        </div>
-        <a class="btn" href="#contact">Get in touch &rarr;</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="section" id="contact" style="background: var(--soft);">
-    <div class="wrap">
-      <div class="eyebrow">Contact us</div>
-      <h2>Get in touch.</h2>
-      <p class="sub">Have a question, a project idea, or just want to say hello? We'd love to hear from you.</p>
-      
-      <div class="contact-grid">
-        <div class="contact-info">
-          <h3>Let's talk about everything!</h3>
-          <p>Don't like forms? Send us an email. We are always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
-          
-          <div class="info-item">
-            <div class="info-icon">&#9993;</div>
-            <span>irani.babak1987@gmail.com</span>
-          </div>
-          <div class="info-item">
-            <div class="info-icon">&#127760;</div>
-            <span>mycelor.irani-babak1987-209.workers.dev</span>
-          </div>
-          
-          <div class="social-links">
-            <a href="#" aria-label="Twitter">X</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="Instagram">Ig</a>
-          </div>
-        </div>
-
-        <div class="contact-form">
-          <div id="form-success">Thank you! Your message has been sent successfully.</div>
-          
-          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="100126b2-39b8-458d-bb39-cc15af8749ba">
-            
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" required placeholder="John Doe">
-            </div>
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input type="email" id="email" name="email" required placeholder="john@example.com">
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
-            </div>
-            <button type="submit" class="btn primary" style="width: 100%; justify-content: center;">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- Footer -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <img src="mycelor-logo.jpg" alt="MYCELOR Logo">
-        <p>One Network. Many Possibilities. Building a connected digital ecosystem for the future.</p>
-      </div>
-      <div class="foot-links">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#about">About Us</a></li>
-        </ul>
-      </div>
-      <div class="foot-links">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>&copy; 2026 MYCELOR. All rights reserved.</span>
-      <span>Designed with purpose.</span>
-    </div>
-  </div>
-</footer>
-
-<!-- اسکریپت مخفی گوگل ترنسلیت و مدیریت تغییر زبان -->
-<!-- این بخش برای این است که از سیستم ترجمه گوگل استفاده کنیم بدون اینکه ظاهر سایت را خراب کند -->
-<div id="google_translate_element" style="display:none;"></div>
-
-<script type="text/javascript">
-  // بستن منو با کلیک در بیرون از آن
-  window.onclick = function(event) {
-    if (!event.target.matches('.lang-btn') && !event.target.matches('.lang-btn *')) {
-      var dropdowns = document.getElementsByClassName("lang-menu");
-      for (var i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('active')) {
-          openDropdown.classList.remove('active');
-        }
-      }
-    }
-  }
-
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({pageLanguage: 'en', autoDisplay: false}, 'google_translate_element');
-  }
-
-  // تابع اختصاصی برای تغییر زبان با استفاده از کوکی‌های گوگل
-  function changeLang(langCode) {
-    var select = document.querySelector('.goog-te-combo');
-    if (select) {
-      select.value = langCode;
-      select.dispatchEvent(new Event('change'));
-    } else {
-      // اگر هنوز لود نشده بود، با تغییر هش آدرس این کار را انجام می‌دهیم
-      window.location.hash = 'googtrans(en|' + langCode + ')';
-      window.location.reload();
-    }
-    document.getElementById('langMenu').classList.remove('active');
-  }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-<!-- اسکریپت نمایش پیام موفقیت فرم -->
-<script>
-  const form = document.getElementById('contact-form');
-  const successMessage = document.getElementById('form-success');
-
-  form.addEventListener('submit', async function(event) {
-    event.preventDefault(); 
-    const data = new FormData(form);
-    const action = form.getAttribute('action');
-    const btn = form.querySelector('button');
-    
-    btn.textContent = 'Sending...';
-
-    try {
-      const response = await fetch(action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        form.reset();
-        successMessage.style.display = 'block';
-        btn.textContent = 'Send Message';
-        setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
-      } else {
-        alert('Error: ' + result.message);
-        btn.textContent = 'Send Message';
-      }
-    } catch (error) {
-      alert('Network error. Please try again.');
-      btn.textContent = 'Send Message';
-    }
-  });
-</script>
-</body>
-</html>
