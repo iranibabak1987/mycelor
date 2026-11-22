@@ -7,18 +7,22 @@
 <meta name="description" content="MYCELOR — One Network. Many Possibilities. A growing digital ecosystem connecting independent products.">
 <title>MYCELOR — One Network. Many Possibilities.</title>
 
-<link rel="icon" type="image/jpeg" href="mycelor-logo.jpg">
-<link rel="apple-touch-icon" href="mycelor-logo.jpg">
+<!-- ۱. فاوآیکون و آیکون اپلیکیشن (PWA) -->
+<link rel="icon" type="image/png" href="icon-512.png">
+<link rel="apple-touch-icon" href="icon-512.png">
+<link rel="manifest" href="manifest.json">
 
+<!-- ۲. سئو و Open Graph -->
 <meta property="og:title" content="MYCELOR — One Network. Many Possibilities.">
 <meta property="og:description" content="A growing network that introduces and connects independent digital products.">
-<meta property="og:image" content="mycelor-logo.jpg">
+<meta property="og:image" content="icon-512.png">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MYCELOR — One Network. Many Possibilities.">
 <meta name="twitter:description" content="A growing network that introduces and connects independent digital products.">
-<meta name="twitter:image" content="mycelor-logo.jpg">
+<meta name="twitter:image" content="icon-512.png">
 
+<!-- فونت اینتر -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
@@ -73,7 +77,6 @@ h1 em { font-style: normal; color: var(--green); }
 
 /* Products */
 .products { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 35px; }
-/* استایل کارت‌ها تغییر کرد تا به لینک تبدیل بشن */
 .card { background: white; border: 1px solid var(--line); border-radius: 13px; padding: 27px; min-height: 245px; box-shadow: 0 12px 35px #193d240c; transition: all 0.3s ease; display: flex; flex-direction: column; text-decoration: none; color: inherit; }
 .card:hover { transform: translateY(-5px); box-shadow: 0 15px 40px #193d241a; border-color: #c5d8c8; }
 .card .symbol { width: 60px; height: 60px; border-radius: 11px; background: var(--paper); display: grid; place-items: center; margin-bottom: 20px; overflow: hidden; padding: 5px; }
@@ -213,7 +216,7 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
       <p class="sub">Every MYCELOR project has its own purpose and identity. Together, they form a growing digital ecosystem. As our root network expands, these products will share data and connect seamlessly. All applications will be accessible directly through this website.</p>
       
       <div class="products">
-        <!-- کارت SFM حالا یک لینک به صفحه اختصاصی است -->
+        <!-- کارت SFM -->
         <a href="sfm.html" class="card">
           <div class="symbol">
             <img src="sfm-logo.png" alt="SFM Logo">
@@ -227,7 +230,7 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
           </div>
         </a>
 
-        <!-- کارت RWG حالا یک لینک به صفحه اختصاصی است -->
+        <!-- کارت RWG -->
         <a href="rwg.html" class="card">
           <div class="symbol">
             <img src="rwg-logo.png" alt="RWG Logo">
