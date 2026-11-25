@@ -45,14 +45,15 @@ a { color: inherit; text-decoration: none; }
 
 /* Header & Nav */
 header { height: 82px; display: flex; align-items: center; border-bottom: 1px solid var(--line); background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; transition: all 0.3s; }
-.head { display: flex; align-items: center; justify-content: space-between; gap: 15px; width: 100%; position: relative; }
+.head { display: flex; align-items: center; justify-content: space-between; gap: 15px; width: 100%; }
 .brand img { width: 140px; height: auto; object-fit: contain; display: block; }
+.nav-container { display: flex; align-items: center; gap: 25px; }
 nav { display: flex; gap: 20px; }
 nav a { font-size: 13px; color: #526258; font-weight: 600; transition: color 0.2s; white-space: nowrap; }
 nav a:hover { color: var(--green); }
 
-/* Custom Language Selector */
-.lang-switcher { position: absolute; top: 50%; right: 0; transform: translateY(-50%); z-index: 10; }
+/* Custom Language Selector (حالا کنار منوهاست) */
+.lang-switcher { position: relative; }
 .lang-btn { display: flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 700; color: var(--muted); cursor: pointer; padding: 5px 8px; border-radius: 5px; transition: 0.2s; border: 1px solid transparent; }
 .lang-btn:hover { color: var(--green); background: var(--soft); border-color: var(--line); }
 .lang-menu { display: none; position: absolute; top: 100%; right: 0; margin-top: 10px; background: white; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 220px; max-height: 350px; overflow-y: auto; z-index: 200; }
@@ -92,6 +93,7 @@ h1 em { font-style: normal; color: var(--green); }
 .card .symbol { width: 60px; height: 60px; border-radius: 11px; background: var(--paper); display: grid; place-items: center; margin-bottom: 20px; overflow: hidden; padding: 5px; }
 .card .symbol img { width: 100%; height: 100%; object-fit: contain; }
 .status { display: inline-block; font-size: 10px; letter-spacing: .06em; text-transform: uppercase; color: #47795a; background: #edf6ef; padding: 7px 9px; border-radius: 30px; font-weight: 800; align-self: flex-start; }
+.available { color: #1e5239; background: #d1f0d9; } /* استایل جدید برای وضعیت آماده */
 .planned { color: #7a7352; background: #f7f4e8; }
 .card h3 { font-size: 23px; margin: 13px 0 8px; }
 .card p { color: var(--muted); font-size: 13px; line-height: 1.75; margin: 0 0 20px 0; flex-grow: 1; }
@@ -164,14 +166,13 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   .business { display: block; padding: 30px; text-align: center; }
   .business .btn { margin-top: 20px; }
   
-  header { height: 70px; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
-  .head { flex-direction: row; padding: 0; justify-content: space-between; }
-  .brand img { width: 95px; }
-  nav { gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
-  nav a { font-size: 11px; }
-  
-  .lang-switcher { position: relative; top: auto; right: auto; transform: none; margin-left: 10px; }
-  .lang-menu { right: 0; }
+  /* اصلاح هدر موبایل و دکمه زبان */
+  header { height: auto; padding: 15px 0; background: #ffffff; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .head { flex-direction: column; padding: 0; gap: 15px; }
+  .brand img { width: 100px; }
+  .nav-container { flex-direction: column; width: 100%; gap: 10px; }
+  nav { gap: 10px; flex-wrap: wrap; justify-content: center; width: 100%; }
+  nav a { font-size: 12px; }
   
   .foot-grid { grid-template-columns: 1fr; gap: 30px; }
   .foot-bottom { flex-direction: column; gap: 10px; text-align: center; }
@@ -181,16 +182,9 @@ footer { padding: 60px 0 30px; border-top: 1px solid var(--line); background: wh
   .hero { padding: 55px 0; }
   .section { padding: 62px 0; }
   .contact-form { padding: 20px; }
-  .brand img { width: 80px; }
-  nav { gap: 6px; }
-  nav a { font-size: 10px; }
+  nav a { font-size: 11px; }
   .info-item { font-size: 13px; }
-  .lang-btn span { display: none; }
 }
-
-/* استایل برای مخفی کردن نوار بالای گوگل ترنسلیت */
-.skiptranslate { display: none !important; }
-body { top: 0px !important; }
 </style>
 </head>
 <body>
@@ -198,126 +192,126 @@ body { top: 0px !important; }
   <div class="wrap head">
     <a class="brand" href="#home" aria-label="MYCELOR home"><img src="mycelor-logo.jpg" alt="MYCELOR logo"></a>
     
-    <!-- منوی اصلی -->
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#products">Products</a>
-      <a href="#about">About</a>
-      <a href="#business">Business</a>
-      <a href="#contact">Contact</a>
-    </nav>
-
-    <!-- دکمه زبان سفارشی با تمام زبان‌ها -->
-    <div class="lang-switcher">
-      <div class="lang-btn" onclick="document.getElementById('langMenu').classList.toggle('active')">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        <span>Language</span>
-      </div>
-      <div class="lang-menu" id="langMenu">
-        <!-- زبان‌ها با استفاده از جاوااسکریپت تغییر می‌کنند -->
-        <a onclick="changeLang('af')">Afrikaans</a>
-        <a onclick="changeLang('sq')">Albanian</a>
-        <a onclick="changeLang('am')">Amharic</a>
-        <a onclick="changeLang('ar')">العربية (Arabic)</a>
-        <a onclick="changeLang('hy')">Armenian</a>
-        <a onclick="changeLang('az')">Azerbaijani</a>
-        <a onclick="changeLang('eu')">Basque</a>
-        <a onclick="changeLang('be')">Belarusian</a>
-        <a onclick="changeLang('bn')">Bengali</a>
-        <a onclick="changeLang('bs')">Bosnian</a>
-        <a onclick="changeLang('bg')">Bulgarian</a>
-        <a onclick="changeLang('ca')">Catalan</a>
-        <a onclick="changeLang('ceb')">Cebuano</a>
-        <a onclick="changeLang('ny')">Chichewa</a>
-        <a onclick="changeLang('zh-CN')">中文 (Chinese)</a>
-        <a onclick="changeLang('co')">Corsican</a>
-        <a onclick="changeLang('hr')">Croatian</a>
-        <a onclick="changeLang('cs')">Czech</a>
-        <a onclick="changeLang('da')">Danish</a>
-        <a onclick="changeLang('nl')">Dutch</a>
-        <a onclick="changeLang('en')" style="color: var(--green); font-weight: bold;">English (Original)</a>
-        <a onclick="changeLang('eo')">Esperanto</a>
-        <a onclick="changeLang('et')">Estonian</a>
-        <a onclick="changeLang('tl')">Filipino</a>
-        <a onclick="changeLang('fi')">Finnish</a>
-        <a onclick="changeLang('fr')">Français (French)</a>
-        <a onclick="changeLang('fy')">Frisian</a>
-        <a onclick="changeLang('gl')">Galician</a>
-        <a onclick="changeLang('ka')">Georgian</a>
-        <a onclick="changeLang('de')">Deutsch (German)</a>
-        <a onclick="changeLang('el')">Greek</a>
-        <a onclick="changeLang('gu')">Gujarati</a>
-        <a onclick="changeLang('ht')">Haitian Creole</a>
-        <a onclick="changeLang('ha')">Hausa</a>
-        <a onclick="changeLang('haw')">Hawaiian</a>
-        <a onclick="changeLang('iw')">Hebrew</a>
-        <a onclick="changeLang('hi')">Hindi</a>
-        <a onclick="changeLang('hmn')">Hmong</a>
-        <a onclick="changeLang('hu')">Hungarian</a>
-        <a onclick="changeLang('is')">Icelandic</a>
-        <a onclick="changeLang('ig')">Igbo</a>
-        <a onclick="changeLang('id')">Indonesian</a>
-        <a onclick="changeLang('ga')">Irish</a>
-        <a onclick="changeLang('it')">Italian</a>
-        <a onclick="changeLang('ja')">日本語 (Japanese)</a>
-        <a onclick="changeLang('jw')">Javanese</a>
-        <a onclick="changeLang('kn')">Kannada</a>
-        <a onclick="changeLang('kk')">Kazakh</a>
-        <a onclick="changeLang('km')">Khmer</a>
-        <a onclick="changeLang('ko')">Korean</a>
-        <a onclick="changeLang('ku')">Kurdish</a>
-        <a onclick="changeLang('ky')">Kyrgyz</a>
-        <a onclick="changeLang('lo')">Lao</a>
-        <a onclick="changeLang('la')">Latin</a>
-        <a onclick="changeLang('lv')">Latvian</a>
-        <a onclick="changeLang('lt')">Lithuanian</a>
-        <a onclick="changeLang('lb')">Luxembourgish</a>
-        <a onclick="changeLang('mk')">Macedonian</a>
-        <a onclick="changeLang('mg')">Malagasy</a>
-        <a onclick="changeLang('ms')">Malay</a>
-        <a onclick="changeLang('ml')">Malayalam</a>
-        <a onclick="changeLang('mt')">Maltese</a>
-        <a onclick="changeLang('mi')">Maori</a>
-        <a onclick="changeLang('mr')">Marathi</a>
-        <a onclick="changeLang('mn')">Mongolian</a>
-        <a onclick="changeLang('my')">Myanmar (Burmese)</a>
-        <a onclick="changeLang('ne')">Nepali</a>
-        <a onclick="changeLang('no')">Norwegian</a>
-        <a onclick="changeLang('ps')">Pashto</a>
-        <a onclick="changeLang('fa')">فارسی (Persian)</a>
-        <a onclick="changeLang('pl')">Polish</a>
-        <a onclick="changeLang('pt')">Portuguese</a>
-        <a onclick="changeLang('pa')">Punjabi</a>
-        <a onclick="changeLang('ro')">Romanian</a>
-        <a onclick="changeLang('ru')">Русский (Russian)</a>
-        <a onclick="changeLang('sm')">Samoan</a>
-        <a onclick="changeLang('gd')">Scots Gaelic</a>
-        <a onclick="changeLang('sr')">Serbian</a>
-        <a onclick="changeLang('st')">Sesotho</a>
-        <a onclick="changeLang('sn')">Shona</a>
-        <a onclick="changeLang('sd')">Sindhi</a>
-        <a onclick="changeLang('si')">Sinhala</a>
-        <a onclick="changeLang('sk')">Slovak</a>
-        <a onclick="changeLang('sl')">Slovenian</a>
-        <a onclick="changeLang('so')">Somali</a>
-        <a onclick="changeLang('es')">Español (Spanish)</a>
-        <a onclick="changeLang('su')">Sundanese</a>
-        <a onclick="changeLang('sw')">Swahili</a>
-        <a onclick="changeLang('sv')">Swedish</a>
-        <a onclick="changeLang('tg')">Tajik</a>
-        <a onclick="changeLang('ta')">Tamil</a>
-        <a onclick="changeLang('te')">Telugu</a>
-        <a onclick="changeLang('th')">Thai</a>
-        <a onclick="changeLang('tr')">Türkçe (Turkish)</a>
-        <a onclick="changeLang('uk')">Ukrainian</a>
-        <a onclick="changeLang('ur')">Urdu</a>
-        <a onclick="changeLang('uz')">Uzbek</a>
-        <a onclick="changeLang('vi')">Vietnamese</a>
-        <a onclick="changeLang('cy')">Welsh</a>
-        <a onclick="changeLang('xh')">Xhosa</a>
-        <a onclick="changeLang('yi')">Yiddish</a>
-        <a onclick="changeLang('yo')">Yoruba</a>
-        <a onclick="changeLang('zu')">Zulu</a>
+    <div class="nav-container">
+      <nav aria-label="Main navigation">
+        <a href="#home">Home</a>
+        <a href="#products">Products</a>
+        <a href="#about">About</a>
+        <a href="#business">Business</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      
+      <!-- دکمه زبان -->
+      <div class="lang-switcher">
+        <div class="lang-btn" onclick="document.getElementById('langMenu').classList.toggle('active')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span>Language</span>
+        </div>
+        <div class="lang-menu" id="langMenu">
+          <a onclick="changeLang('af')">Afrikaans</a>
+          <a onclick="changeLang('sq')">Albanian</a>
+          <a onclick="changeLang('am')">Amharic</a>
+          <a onclick="changeLang('ar')">العربية (Arabic)</a>
+          <a onclick="changeLang('hy')">Armenian</a>
+          <a onclick="changeLang('az')">Azerbaijani</a>
+          <a onclick="changeLang('eu')">Basque</a>
+          <a onclick="changeLang('be')">Belarusian</a>
+          <a onclick="changeLang('bn')">Bengali</a>
+          <a onclick="changeLang('bs')">Bosnian</a>
+          <a onclick="changeLang('bg')">Bulgarian</a>
+          <a onclick="changeLang('ca')">Catalan</a>
+          <a onclick="changeLang('ceb')">Cebuano</a>
+          <a onclick="changeLang('ny')">Chichewa</a>
+          <a onclick="changeLang('zh-CN')">中文 (Chinese)</a>
+          <a onclick="changeLang('co')">Corsican</a>
+          <a onclick="changeLang('hr')">Croatian</a>
+          <a onclick="changeLang('cs')">Czech</a>
+          <a onclick="changeLang('da')">Danish</a>
+          <a onclick="changeLang('nl')">Dutch</a>
+          <a onclick="changeLang('en')" style="color: var(--green); font-weight: bold;">English (Original)</a>
+          <a onclick="changeLang('eo')">Esperanto</a>
+          <a onclick="changeLang('et')">Estonian</a>
+          <a onclick="changeLang('tl')">Filipino</a>
+          <a onclick="changeLang('fi')">Finnish</a>
+          <a onclick="changeLang('fr')">Français (French)</a>
+          <a onclick="changeLang('fy')">Frisian</a>
+          <a onclick="changeLang('gl')">Galician</a>
+          <a onclick="changeLang('ka')">Georgian</a>
+          <a onclick="changeLang('de')">Deutsch (German)</a>
+          <a onclick="changeLang('el')">Greek</a>
+          <a onclick="changeLang('gu')">Gujarati</a>
+          <a onclick="changeLang('ht')">Haitian Creole</a>
+          <a onclick="changeLang('ha')">Hausa</a>
+          <a onclick="changeLang('haw')">Hawaiian</a>
+          <a onclick="changeLang('iw')">Hebrew</a>
+          <a onclick="changeLang('hi')">Hindi</a>
+          <a onclick="changeLang('hmn')">Hmong</a>
+          <a onclick="changeLang('hu')">Hungarian</a>
+          <a onclick="changeLang('is')">Icelandic</a>
+          <a onclick="changeLang('ig')">Igbo</a>
+          <a onclick="changeLang('id')">Indonesian</a>
+          <a onclick="changeLang('ga')">Irish</a>
+          <a onclick="changeLang('it')">Italian</a>
+          <a onclick="changeLang('ja')">日本語 (Japanese)</a>
+          <a onclick="changeLang('jw')">Javanese</a>
+          <a onclick="changeLang('kn')">Kannada</a>
+          <a onclick="changeLang('kk')">Kazakh</a>
+          <a onclick="changeLang('km')">Khmer</a>
+          <a onclick="changeLang('ko')">Korean</a>
+          <a onclick="changeLang('ku')">Kurdish</a>
+          <a onclick="changeLang('ky')">Kyrgyz</a>
+          <a onclick="changeLang('lo')">Lao</a>
+          <a onclick="changeLang('la')">Latin</a>
+          <a onclick="changeLang('lv')">Latvian</a>
+          <a onclick="changeLang('lt')">Lithuanian</a>
+          <a onclick="changeLang('lb')">Luxembourgish</a>
+          <a onclick="changeLang('mk')">Macedonian</a>
+          <a onclick="changeLang('mg')">Malagasy</a>
+          <a onclick="changeLang('ms')">Malay</a>
+          <a onclick="changeLang('ml')">Malayalam</a>
+          <a onclick="changeLang('mt')">Maltese</a>
+          <a onclick="changeLang('mi')">Maori</a>
+          <a onclick="changeLang('mr')">Marathi</a>
+          <a onclick="changeLang('mn')">Mongolian</a>
+          <a onclick="changeLang('my')">Myanmar (Burmese)</a>
+          <a onclick="changeLang('ne')">Nepali</a>
+          <a onclick="changeLang('no')">Norwegian</a>
+          <a onclick="changeLang('ps')">Pashto</a>
+          <a onclick="changeLang('fa')">فارسی (Persian)</a>
+          <a onclick="changeLang('pl')">Polish</a>
+          <a onclick="changeLang('pt')">Portuguese</a>
+          <a onclick="changeLang('pa')">Punjabi</a>
+          <a onclick="changeLang('ro')">Romanian</a>
+          <a onclick="changeLang('ru')">Русский (Russian)</a>
+          <a onclick="changeLang('sm')">Samoan</a>
+          <a onclick="changeLang('gd')">Scots Gaelic</a>
+          <a onclick="changeLang('sr')">Serbian</a>
+          <a onclick="changeLang('st')">Sesotho</a>
+          <a onclick="changeLang('sn')">Shona</a>
+          <a onclick="changeLang('sd')">Sindhi</a>
+          <a onclick="changeLang('si')">Sinhala</a>
+          <a onclick="changeLang('sk')">Slovak</a>
+          <a onclick="changeLang('sl')">Slovenian</a>
+          <a onclick="changeLang('so')">Somali</a>
+          <a onclick="changeLang('es')">Español (Spanish)</a>
+          <a onclick="changeLang('su')">Sundanese</a>
+          <a onclick="changeLang('sw')">Swahili</a>
+          <a onclick="changeLang('sv')">Swedish</a>
+          <a onclick="changeLang('tg')">Tajik</a>
+          <a onclick="changeLang('ta')">Tamil</a>
+          <a onclick="changeLang('te')">Telugu</a>
+          <a onclick="changeLang('th')">Thai</a>
+          <a onclick="changeLang('tr')">Türkçe (Turkish)</a>
+          <a onclick="changeLang('uk')">Ukrainian</a>
+          <a onclick="changeLang('ur')">Urdu</a>
+          <a onclick="changeLang('uz')">Uzbek</a>
+          <a onclick="changeLang('vi')">Vietnamese</a>
+          <a onclick="changeLang('cy')">Welsh</a>
+          <a onclick="changeLang('xh')">Xhosa</a>
+          <a onclick="changeLang('yi')">Yiddish</a>
+          <a onclick="changeLang('yo')">Yoruba</a>
+          <a onclick="changeLang('zu')">Zulu</a>
+        </div>
       </div>
     </div>
   </div>
@@ -350,19 +344,21 @@ body { top: 0px !important; }
       <p class="sub">Every MYCELOR project has its own purpose and identity. Together, they form a growing digital ecosystem. As our root network expands, these products will share data and connect seamlessly. All applications will be accessible directly through this website.</p>
       
       <div class="products">
+        <!-- کارت SFM (آپدیت شده) -->
         <a href="sfm.html" class="card">
           <div class="symbol">
             <img src="sfm-logo.png" alt="SFM Logo" class="notranslate">
           </div>
-          <span class="status notranslate">In development</span>
+          <span class="status available notranslate">Available</span>
           <h3 class="notranslate">SFM</h3>
           <p>Simple Football Manager: A comprehensive football management simulator. Buy and sell players, manage professional leagues, and connect with other managers through the RWG network.</p>
           <div class="progress-container">
-            <div class="progress-text"><span>Progress</span><span>90%</span></div>
-            <div class="progress-bar"><div class="progress-fill" style="width: 90%;"></div></div>
+            <div class="progress-text"><span>Progress</span><span>100%</span></div>
+            <div class="progress-bar"><div class="progress-fill" style="width: 100%;"></div></div>
           </div>
         </a>
 
+        <!-- کارت RWG -->
         <a href="rwg.html" class="card">
           <div class="symbol">
             <img src="rwg-logo.png" alt="RWG Logo" class="notranslate">
@@ -376,6 +372,7 @@ body { top: 0px !important; }
           </div>
         </a>
 
+        <!-- STORE Card -->
         <article class="card">
           <div class="symbol">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="color: var(--green);"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -458,134 +455,4 @@ body { top: 0px !important; }
           <div class="social-links">
             <a href="#" aria-label="Twitter">X</a>
             <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="Instagram">Ig</a>
-          </div>
-        </div>
-
-        <div class="contact-form">
-          <div id="form-success">Thank you! Your message has been sent successfully.</div>
-          
-          <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-            <input type="hidden" name="access_key" value="100126b2-39b8-458d-bb39-cc15af8749ba">
-            
-            <div class="form-group">
-              <label for="name">Your Name</label>
-              <input type="text" id="name" name="name" required placeholder="John Doe">
-            </div>
-            <div class="form-group">
-              <label for="email">Your Email</label>
-              <input type="email" id="email" name="email" required placeholder="john@example.com">
-            </div>
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" required placeholder="How can we help you?"></textarea>
-            </div>
-            <button type="submit" class="btn primary" style="width: 100%; justify-content: center;">Send Message</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </section>
-</main>
-
-<!-- Footer -->
-<footer>
-  <div class="wrap">
-    <div class="foot-grid">
-      <div class="foot-brand">
-        <img src="mycelor-logo.jpg" alt="MYCELOR Logo">
-        <p>One Network. Many Possibilities. Building a connected digital ecosystem for the future.</p>
-      </div>
-      <div class="foot-links">
-        <h4>Explore</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#about">About Us</a></li>
-        </ul>
-      </div>
-      <div class="foot-links">
-        <h4>Legal</h4>
-        <ul>
-          <li><a href="privacy.html">Privacy Policy</a></li>
-          <li><a href="terms.html">Terms of Service</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="foot-bottom">
-      <span>&copy; 2026 MYCELOR. All rights reserved.</span>
-      <span>Designed with purpose.</span>
-    </div>
-  </div>
-</footer>
-
-<script>
-  // بستن منو با کلیک در بیرون از آن
-  window.onclick = function(event) {
-    if (!event.target.matches('.lang-btn') && !event.target.matches('.lang-btn *')) {
-      var dropdowns = document.getElementsByClassName("lang-menu");
-      for (var i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('active')) {
-          openDropdown.classList.remove('active');
-        }
-      }
-    }
-  }
-
-  // تابع تغییر زبان
-  function changeLang(langCode) {
-    // پاک کردن کوکی‌های قبلی برای جلوگیری از تداخل
-    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
-    
-    // اگر زبان انگلیسی بود، هیچ ترجمه‌ای اعمال نشود
-    if (langCode === 'en') {
-      window.location.reload();
-      return;
-    }
-    
-    // هدایت به گوگل ترنسلیت برای زبان‌های دیگر
-    var url = window.location.href.split('?')[0].split('#')[0];
-    window.location.href = "https://translate.google.com/translate?sl=auto&tl=" + langCode + "&u=" + url;
-  }
-
-  // اسکریپت نمایش پیام موفقیت فرم
-  const form = document.getElementById('contact-form');
-  const successMessage = document.getElementById('form-success');
-
-  form.addEventListener('submit', async function(event) {
-    event.preventDefault(); 
-    const data = new FormData(form);
-    const action = form.getAttribute('action');
-    const btn = form.querySelector('button');
-    
-    btn.textContent = 'Sending...';
-
-    try {
-      const response = await fetch(action, {
-        method: 'POST',
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      });
-
-      const result = await response.json();
-
-      if (result.success) {
-        form.reset();
-        successMessage.style.display = 'block';
-        btn.textContent = 'Send Message';
-        setTimeout(() => { successMessage.style.display = 'none'; }, 5000);
-      } else {
-        alert('Error: ' + result.message);
-        btn.textContent = 'Send Message';
-      }
-    } catch (error) {
-      alert('Network error. Please try again.');
-      btn.textContent = 'Send Message';
-    }
-  });
-</script>
-</body>
-</html>
+            <a
