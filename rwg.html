@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RWG - Free Social Network & Business Platform | MYCELOR</title>
+<meta name="description" content="Join RWG, a free social network with live conferences, voting systems, and business storefronts. Connect with people and grow your business.">
+<meta name="keywords" content="RWG, Social Network, Live Streaming, Business Store, MYCELOR, Free Social Media">
+<link rel="icon" type="image/jpeg" href="mycelor-logo.jpg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root { 
+    --bg: #f7faf7; 
+    --card-bg: #ffffff; 
+    --text: #17251e; 
+    --muted: #64736a;
+    --green: #286b4c; 
+    --green-light: #edf6ef;
+    --border: #e2ebe4; 
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; line-height: 1.8; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(900px, 90%); margin: auto; padding: 40px 0; }
+  
+  .top-bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 40px; flex-wrap: wrap; gap: 20px; }
+  .back-btn { display: inline-flex; padding: 10px 15px; background: var(--card-bg); border: 1px solid var(--border); border-radius: 7px; font-size: 14px; transition: 0.3s; color: var(--muted); }
+  .back-btn:hover { background: var(--green-light); color: var(--green); border-color: var(--green); }
+  .logo-area { display: flex; align-items: center; gap: 15px; }
+  .logo-area img { width: 60px; height: 60px; border-radius: 12px; border: 1px solid var(--border); padding: 5px; background: white; }
+  h1 { font-size: 32px; margin: 0; color: var(--text); letter-spacing: -0.04em; }
+  
+  .slider-container { position: relative; width: 100%; max-width: 180px; margin: 20px auto; overflow: hidden; border-radius: 15px; border: 2px solid var(--border); box-shadow: 0 10px 25px rgba(0,0,0,0.08); aspect-ratio: 9/19; background: #000; }
+  .slider { display: flex; transition: transform 0.4s ease-in-out; height: 100%; }
+  .slider img { width: 100%; height: 100%; object-fit: cover; flex-shrink: 0; }
+  
+  .slider-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(255,255,255,0.85); color: var(--text); border: none; font-size: 12px; padding: 6px 10px; cursor: pointer; border-radius: 50%; z-index: 10; transition: 0.3s; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+  .slider-btn:hover { background: var(--green); color: white; }
+  .prev { left: 5px; }
+  .next { right: 5px; }
+  
+  h2 { color: var(--text); font-size: 24px; margin-top: 40px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+  p { color: var(--muted); font-size: 16px; }
+  
+  .features { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
+  .feature-item { background: var(--card-bg); border: 1px solid var(--border); padding: 18px; border-radius: 10px; display: flex; align-items: center; gap: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.02); }
+  .feature-item svg { color: var(--green); width: 24px; height: 24px; flex-shrink: 0; }
+  .feature-item span { font-weight: 600; font-size: 14px; }
+  
+  .download-section { margin-top: 50px; text-align: center; background: var(--card-bg); padding: 40px 20px; border-radius: 15px; border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.03); }
+  .download-grid { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-top: 25px; }
+  
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 25px; border-radius: 8px; font-weight: 700; font-size: 15px; transition: 0.3s; cursor: pointer; border: none; }
+  
+  .btn-android { background: var(--green); color: white; }
+  .btn-android:hover { background: #1e5239; transform: translateY(-3px); box-shadow: 0 5px 15px rgba(40,107,76,0.3); }
+  
+  .btn-web { background: var(--bg); color: var(--text); border: 1px solid var(--border); }
+  .btn-web:hover { background: var(--green-light); border-color: var(--green); color: var(--green); transform: translateY(-3px); }
+  
+  .btn-ios { background: var(--bg); color: #a0aab2; border: 1px dashed var(--border); cursor: not-allowed; }
+  
+  @media(max-width: 600px) {
+    .top-bar { flex-direction: column-reverse; align-items: flex-start; }
+    .features { grid-template-columns: 1fr; }
+    .download-grid { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  
+  <div class="top-bar">
+    <a href="index.html" class="back-btn">&larr; Back to MYCELOR</a>
+    <div class="logo-area">
+      <img src="rwg-logo.png" alt="RWG Logo">
+      <h1>RWG Social Network</h1>
+    </div>
+  </div>
+
+  <p style="text-align: center; font-size: 18px; color: var(--text);">Connect, vote, and grow your business. A dynamic social platform designed for everyone.</p>
+
+  <div class="slider-container">
+    <div class="slider" id="slider">
+      <img src="rwg-screen1.png" alt="RWG Home">
+      <img src="rwg-screen2.png" alt="RWG Profile">
+      <img src="rwg-screen3.png" alt="RWG Direct Messages">
+      <img src="rwg-screen4.png" alt="RWG Live">
+      <img src="rwg-screen5.png" alt="RWG Business">
+    </div>
+    <button class="slider-btn prev" onclick="moveSlide(-1)">&#10094;</button>
+    <button class="slider-btn next" onclick="moveSlide(1)">&#10095;</button>
+  </div>
+
+  <h2>Network Features</h2>
+  <div class="features">
+    <div class="feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20V10M18 20V4M6 20v-4"/></svg>
+      <span>Interactive Voting System</span>
+    </div>
+    <div class="feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <span>Business Live & Conferences</span>
+    </div>
+    <div class="feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <span>Storefronts for All Professions</span>
+    </div>
+    <div class="feature-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span>Direct Messaging & Chat</span>
+    </div>
+  </div>
+
+  <h2>How to Connect</h2>
+  <p>RWG is completely free to use. You can download the native Android application (APK) to stay connected on the go, or access it instantly using our Web App directly from your browser.</p>
+
+  <div class="download-section">
+    <h2 style="margin-top: 0; border: none;">Join RWG Now</h2>
+    <p style="margin-bottom: 20px;">Choose your preferred platform below.</p>
+    
+    <div class="download-grid">
+      <a href="#" class="btn btn-android" onclick="alert('Android APK will be available here soon!')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993.0004.5511-.4482.9997-.9993.9997m-11.046 0c-.5511 0-.9993-.4486-.9993-.9997s.4482-.9993.9993-.9993c.5511 0 .9993.4482.9993.9993 0 .5511-.4482.9997-.9993.9997m11.4045-6.02l1.9973-3.4592a.416.416 0 00-.1521-.5676.416.416 0 00-.5676.1521l-2.0223 3.503C15.5902 8.2439 13.8533 7.8508 12 7.8508s-3.5902.3931-5.1367 1.0989L4.841 5.4467a.4161.4161 0 00-.5677-.1521.4157.4157 0 00-.1521.5676l1.9973 3.4592C2.6889 11.1867.3432 14.6589 0 18.761h24c-.3435-4.1021-2.6892-7.5743-6.1185-9.4396"/></svg>
+        Download APK
+      </a>
+      
+      <a href="#" class="btn btn-web" onclick="alert('Web App is coming very soon!')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Open Web App
+      </a>
+
+      <a href="#" class="btn btn-ios">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.85 1.21-2.02 1.08-3.16-1.02.03-2.26.67-2.98 1.51-.63.71-1.18 1.91-1.03 3.03 1.13.09 2.28-.58 2.93-1.38z"/></svg>
+        iOS (Coming Soon)
+      </a>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  let currentSlide = 0;
+  const slides = document.querySelectorAll('.slider img');
+  const totalSlides = slides.length;
+
+  function moveSlide(direction) {
+    currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+    const slider = document.getElementById('slider');
+    slider.style.transform = `translateX(-${currentSlide * 100}%)`;
+  }
+</script>
+
+<!-- Cloudflare Web Analytics --><script type='module' src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "19a6cbb819404c51a78b38667ddfbdee"}'></script><!-- End Cloudflare Web Analytics -->
+</body>
+  </html>
